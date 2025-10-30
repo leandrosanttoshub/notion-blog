@@ -251,41 +251,44 @@
 }
 
 /* Category Menu (filtro do blog) */
-/* ==== Category Menu — correct scoped CSS module ==== */
-.blogIndex .categoryMenu {
+/* ===== MENU DE CATEGORIAS ===== */
+
+.blog_categoryMenu__2rzEA {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  margin-bottom: 12px;
-  margin-top: -10px;
+  gap: 6px;
+  margin-top: -10px; /* aproxima do título */
+  margin-bottom: 15px; /* espaço abaixo */
 }
 
-.blogIndex .categoryRow {
+.blog_categoryRow__1B6Lz {
   display: flex;
-  gap: 7px;
+  gap: 6px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.blogIndex .categoryButton {
+/* BOTÕES */
+.blog_categoryButton__3Cz_i {
   background: transparent;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  padding: 3px 10px;
+  padding: 2px 8px;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   font-family: inherit;
-  color: #333;
-  transition: all 0.2s linear;
+  color: #444;
+  transition: all 0.2s ease;
 }
 
-.blogIndex .categoryButton:hover {
-  background: rgba(0, 0, 0, 0.08);
+.blog_categoryButton__3Cz_i:hover {
+  background: rgba(0, 0, 0, 0.07);
 }
 
-.blogIndex .activeCategory {
-  background: #111;
-  color: #fff;
-  border-color: #111;
+/* BOTÃO ATIVO */
+.blog_activeCategory__2go0U {
+  background: #111 !important;
+  color: #fff !important;
+  border-color: #111 !important;
 }
