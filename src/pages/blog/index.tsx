@@ -60,6 +60,41 @@ export async function getStaticProps({ preview }) {
 const Index = ({ posts = [], preview }) => {
   const [selectedType, setSelectedType] = useState<string | null>(null)
 
+  const menuWrapStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 6,
+    marginTop: -10,
+    marginBottom: 15,
+  }
+
+  const rowStyle: React.CSSProperties = {
+    display: 'flex',
+    gap: 8,
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  }
+
+  const btnStyle: React.CSSProperties = {
+    background: 'transparent',
+    border: '1px solid rgba(0,0,0,0.15)',
+    padding: '3px 8px',
+    borderRadius: 10,
+    cursor: 'pointer',
+    fontSize: '0.7rem',
+    fontFamily: 'inherit',
+    color: '#333',
+    transition: 'background .2s ease',
+  }
+
+  const btnActiveStyle: React.CSSProperties = {
+    ...btnStyle,
+    background: '#000',
+    color: '#fff',
+    borderColor: '#000',
+  }
+
   return (
     <>
       <Header titlePre="Blog" />
@@ -77,12 +112,14 @@ const Index = ({ posts = [], preview }) => {
         <h1>My Notion Blog</h1>
 
         {/* Submenu de categorias */}
-        <div className={blogStyles.categoryMenu}>
+        {/* Submenu de categorias (3 linhas), com estilo inline para garantir override */}
+        <div className={blogStyles.categoryMenu} style={menuWrapStyle}>
           {/* Linha 1 */}
           <button
             className={`${blogStyles.categoryButton} ${
               selectedType === 'Problemas1' ? blogStyles.activeCategory : ''
             }`}
+            style={selectedType === 'Problemas1' ? btnActiveStyle : btnStyle}
             onClick={() => setSelectedType('Problemas1')}
           >
             Problemas que você acha que tem
@@ -93,19 +130,21 @@ const Index = ({ posts = [], preview }) => {
             className={`${blogStyles.categoryButton} ${
               selectedType === 'Problemas2' ? blogStyles.activeCategory : ''
             }`}
+            style={selectedType === 'Problemas2' ? btnActiveStyle : btnStyle}
             onClick={() => setSelectedType('Problemas2')}
           >
             Problemas que eu acho que talvez você tenha
           </button>
 
           {/* Linha 3 */}
-          <div className={blogStyles.categoryRow}>
+          <div className={blogStyles.categoryRow} style={rowStyle}>
             {['Devocionais', 'Estudos'].map((type) => (
               <button
                 key={type}
                 className={`${blogStyles.categoryButton} ${
                   selectedType === type ? blogStyles.activeCategory : ''
                 }`}
+                style={selectedType === type ? btnActiveStyle : btnStyle}
                 onClick={() => setSelectedType(type)}
               >
                 {type}
@@ -114,6 +153,7 @@ const Index = ({ posts = [], preview }) => {
 
             <button
               className={blogStyles.categoryButton}
+              style={selectedType === null ? btnActiveStyle : btnStyle}
               onClick={() => setSelectedType(null)}
             >
               Todos
