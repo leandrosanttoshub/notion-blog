@@ -109,7 +109,7 @@ const Index = ({ posts = [], preview }) => {
         </div>
       )}
       <div className={`${sharedStyles.layout} ${blogStyles.blogIndex}`}>
-        <h1>My Notion Blog</h1>
+        <h1 style={{ color: 'purple' }}>My Notion Blog</h1>
 
         {/* Submenu de categorias */}
         {/* Submenu de categorias (3 linhas), com estilo inline para garantir override */}
