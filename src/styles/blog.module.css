@@ -251,30 +251,43 @@
 }
 
 /* Category Menu (filtro do blog) */
+/* Container central do menu */
 .categoryMenu {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin: 10px 0 35px;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 40px;
 }
 
+/* Linha de botões na última linha */
+.categoryRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Botão clean */
 .categoryButton {
-  background: transparent;
+  background: #fafafa;
   border: 1px solid rgba(0, 0, 0, 0.25);
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 14px;
-  font-size: 0.85rem;
   cursor: pointer;
-  transition: all 0.2s;
+  font-size: 0.88rem;
+  color: #333;
+  font-family: inherit; /* IMPORTANTE — mantém a tipografia do layout */
+  transition: all 0.2s ease;
 }
 
 .categoryButton:hover {
-  background: rgba(0, 0, 0, 0.06);
+  background: rgba(0, 0, 0, 0.08);
 }
 
+/* Botão ativo */
 .activeCategory {
-  background: black;
+  background: #111;
   color: white;
-  border-color: black;
+  border-color: #111;
 }
