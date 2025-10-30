@@ -267,16 +267,16 @@
   justify-content: center;
 }
 
-.categoryButton {
-  border: 2px solid red !important;
-  background: yellow !important;
-  padding: 3px 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 0.5rem;
-  font-family: inherit; /* usa a mesma fonte do resto do site */
-  color: #333;
-  transition: all 0.2s ease;
+:global(.categoryButton) {
+  background: transparent !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  padding: 3px 10px !important;
+  border-radius: 10px !important;
+  cursor: pointer !important;
+  font-size: 0.5rem !important;
+  font-family: inherit !important; /* usa a mesma fonte do resto do site */
+  color: #333 !important;
+  transition: all 0.2s ease !important;
 }
 
 .categoryButton:hover {
