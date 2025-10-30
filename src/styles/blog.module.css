@@ -253,42 +253,43 @@
 /* Category Menu (filtro do blog) */
 /* ===== MENU DE CATEGORIAS ===== */
 
-.blog_categoryMenu__2rzEA {
+/* Botões do filtro do blog */
+[class*='blog_categoryButton'] {
+  background: #fafafa !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  padding: 3px 8px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  font-size: 0.7rem !important;
+  font-family: inherit !important;
+  color: #333 !important;
+  transition: background 0.2s ease !important;
+  margin: 2px !important;
+}
+
+[class*='blog_categoryButton']:hover {
+  background: rgba(0, 0, 0, 0.08) !important;
+}
+
+[class*='blog_activeCategory'] {
+  background: #000 !important;
+  color: white !important;
+  border-color: #000 !important;
+}
+
+/* Container do menu */
+[class*='blog_categoryMenu'] {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  margin-top: -10px; /* aproxima do título */
-  margin-bottom: 15px; /* espaço abaixo */
+  margin-bottom: 18px;
 }
 
-.blog_categoryRow__1B6Lz {
+/* Linha com Devocionais / Estudos / Todos */
+[class*='blog_categoryRow'] {
   display: flex;
   gap: 6px;
-  flex-wrap: wrap;
   justify-content: center;
-}
-
-/* BOTÕES */
-.blog_categoryButton__3Cz_i {
-  background: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  padding: 2px 8px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 0.65rem;
-  font-family: inherit;
-  color: #444;
-  transition: all 0.2s ease;
-}
-
-.blog_categoryButton__3Cz_i:hover {
-  background: rgba(0, 0, 0, 0.07);
-}
-
-/* BOTÃO ATIVO */
-.blog_activeCategory__2go0U {
-  background: #111 !important;
-  color: #fff !important;
-  border-color: #111 !important;
+  flex-wrap: wrap;
 }
