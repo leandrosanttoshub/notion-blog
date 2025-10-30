@@ -70,23 +70,19 @@ const Index = ({ posts = [], preview }) => {
       <div className={`${sharedStyles.layout} ${blogStyles.blogIndex}`}>
         <h1>My Notion Blog</h1>
 
-        {/* Submenu de tipos */}
-        <div className={blogStyles.typeMenu}>
-          {POST_TYPES.map((type) => (
+        {/* Submenu de categorias */}
+        <div className={blogStyles.categoryMenu}>
+          {[...POST_TYPES, 'Todos'].map((type) => (
             <button
               key={type}
-              className={blogStyles.typeButton}
-              onClick={() => setSelectedType(type)}
+              className={`${blogStyles.categoryButton} ${
+                selectedType === type ? blogStyles.activeCategory : ''
+              }`}
+              onClick={() => setSelectedType(type === 'Todos' ? null : type)}
             >
               {type}
             </button>
           ))}
-          <button
-            className={blogStyles.typeButton}
-            onClick={() => setSelectedType(null)}
-          >
-            Todos
-          </button>
         </div>
 
         {posts.length === 0 && (
