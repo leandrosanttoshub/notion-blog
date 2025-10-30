@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Link from 'next/link'
 import Header from '../../components/header'
 
@@ -12,6 +13,9 @@ import {
 import { textBlock } from '../../lib/notion/renderers'
 import getNotionUsers from '../../lib/notion/getNotionUsers'
 import getBlogIndex from '../../lib/notion/getBlogIndex'
+
+// Definindo os tipos de posts
+const POST_TYPES = ['Problemas1', 'Problemas2', 'Devocionais', 'Estudos']
 
 export async function getStaticProps({ preview }) {
   const postsTable = await getBlogIndex()
@@ -48,14 +52,15 @@ export async function getStaticProps({ preview }) {
 }
 
 const Index = ({ posts = [], preview }) => {
+  const [selectedType, setSelectedType] = useState<string | null>(null)
+
   return (
     <>
       <Header titlePre="Blog" />
       {preview && (
         <div className={blogStyles.previewAlertContainer}>
           <div className={blogStyles.previewAlert}>
-            <b>Note:</b>
-            {` `}Viewing in preview mode{' '}
+            <b>Note:</b> Viewing in preview mode{' '}
             <Link href={`/api/clear-preview`}>
               <button className={blogStyles.escapePreview}>Exit Preview</button>
             </Link>
@@ -64,40 +69,63 @@ const Index = ({ posts = [], preview }) => {
       )}
       <div className={`${sharedStyles.layout} ${blogStyles.blogIndex}`}>
         <h1>My Notion Blog</h1>
+
+        {/* Submenu de tipos */}
+        <div className={blogStyles.typeMenu}>
+          {POST_TYPES.map((type) => (
+            <button
+              key={type}
+              className={blogStyles.typeButton}
+              onClick={() => setSelectedType(type)}
+            >
+              {type}
+            </button>
+          ))}
+          <button
+            className={blogStyles.typeButton}
+            onClick={() => setSelectedType(null)}
+          >
+            Todos
+          </button>
+        </div>
+
         {posts.length === 0 && (
           <p className={blogStyles.noPosts}>There are no posts yet</p>
         )}
-        {posts.map((post) => {
-          return (
-            <div className={blogStyles.postPreview} key={post.Slug}>
-              <h3>
-                <span className={blogStyles.titleContainer}>
-                  {!post.Published && (
-                    <span className={blogStyles.draftBadge}>Draft</span>
-                  )}
-                  <Link href="/blog/[slug]" as={getBlogLink(post.Slug)}>
-                    <a>{post.Page}</a>
-                  </Link>
-                </span>
-              </h3>
-              {post.Authors.length > 0 && (
-                <div className="authors">Por: {post.Authors.join(' ')}</div>
-              )}
-              {post.Date && (
-                <div className="posted">
-                  Publicado em {getDateStr(post.Date)}
-                </div>
-              )}
-              <p>
-                {(!post.preview || post.preview.length === 0) &&
-                  'No preview available'}
-                {(post.preview || []).map((block, idx) =>
-                  textBlock(block, true, `${post.Slug}${idx}`)
+
+        {posts
+          .filter((post) => !selectedType || post.Type === selectedType)
+          .map((post) => {
+            return (
+              <div className={blogStyles.postPreview} key={post.Slug}>
+                <h3>
+                  <span className={blogStyles.titleContainer}>
+                    {!post.Published && (
+                      <span className={blogStyles.draftBadge}>Draft</span>
+                    )}
+                    <Link href="/blog/[slug]" as={getBlogLink(post.Slug)}>
+                      <a>{post.Page}</a>
+                    </Link>
+                  </span>
+                </h3>
+                {post.Authors.length > 0 && (
+                  <div className="authors">Por: {post.Authors.join(' ')}</div>
                 )}
-              </p>
-            </div>
-          )
-        })}
+                {post.Date && (
+                  <div className="posted">
+                    Publicado em {getDateStr(post.Date)}
+                  </div>
+                )}
+                <p>
+                  {(!post.preview || post.preview.length === 0) &&
+                    'No preview available'}
+                  {(post.preview || []).map((block, idx) =>
+                    textBlock(block, true, `${post.Slug}${idx}`)
+                  )}
+                </p>
+              </div>
+            )
+          })}
       </div>
     </>
   )
