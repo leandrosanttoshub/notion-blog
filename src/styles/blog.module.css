@@ -268,8 +268,8 @@
 }
 
 .categoryButton {
-  background: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 2px solid red !important;
+  background: yellow !important;
   padding: 3px 10px;
   border-radius: 10px;
   cursor: pointer;
@@ -287,12 +287,4 @@
   background: #111;
   color: #fff;
   border-color: #111;
-}
-
-h1 {
-  color: red !important;
-}
-
-:global(h1) {
-  color: red !important;
 }
