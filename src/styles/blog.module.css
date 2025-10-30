@@ -256,8 +256,8 @@
   display: flex;
   flex-direction: column; /* vertical: 1ª linha, 2ª linha, 3ª linha */
   align-items: center;
-  gap: 6px;
-  margin-bottom: 40px;
+  gap: 4px;
+  margin-bottom: 25px;
 }
 
 .categoryRow {
@@ -268,10 +268,10 @@
 }
 
 .categoryButton {
-  background: #fafafa;
-  border: 0px solid rgba(0, 0, 0, 0.25);
-  padding: 6px 14px;
-  border-radius: 14px;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 3px 10px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 0.5rem;
   font-family: inherit; /* usa a mesma fonte do resto do site */
@@ -287,4 +287,8 @@
   background: #111;
   color: #fff;
   border-color: #111;
+}
+
+h1 {
+  color: red !important;
 }
