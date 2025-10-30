@@ -249,3 +249,32 @@
   width: 100%;
   height: 100%;
 }
+
+/* Category Menu (filtro do blog) */
+.categoryMenu {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0 35px;
+}
+
+.categoryButton {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  padding: 6px 12px;
+  border-radius: 14px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.categoryButton:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.activeCategory {
+  background: black;
+  color: white;
+  border-color: black;
+}
