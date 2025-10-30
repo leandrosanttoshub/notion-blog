@@ -254,30 +254,28 @@
 /* Container central do menu */
 .categoryMenu {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* vertical: 1ª linha, 2ª linha, 3ª linha */
   align-items: center;
   gap: 6px;
   margin-bottom: 40px;
 }
 
-/* Linha de botões na última linha */
 .categoryRow {
-  display: flex;
+  display: flex; /* a terceira linha fica horizontal */
   gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-/* Botão clean */
 .categoryButton {
   background: #fafafa;
   border: 1px solid rgba(0, 0, 0, 0.25);
   padding: 6px 14px;
   border-radius: 14px;
   cursor: pointer;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
+  font-family: inherit; /* usa a mesma fonte do resto do site */
   color: #333;
-  font-family: inherit; /* IMPORTANTE — mantém a tipografia do layout */
   transition: all 0.2s ease;
 }
 
@@ -285,9 +283,8 @@
   background: rgba(0, 0, 0, 0.08);
 }
 
-/* Botão ativo */
 .activeCategory {
   background: #111;
-  color: white;
+  color: #fff;
   border-color: #111;
 }

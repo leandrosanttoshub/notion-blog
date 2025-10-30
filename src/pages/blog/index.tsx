@@ -15,7 +15,13 @@ import getNotionUsers from '../../lib/notion/getNotionUsers'
 import getBlogIndex from '../../lib/notion/getBlogIndex'
 
 // Definindo os tipos de posts
-const POST_TYPES = ['Problemas1', 'Problemas2', 'Devocionais', 'Estudos']
+
+const TYPE_LABELS: Record<string, string> = {
+  Problemas1: 'Problemas que você acha que tem',
+  Problemas2: 'Problemas que eu acho que talvez você tenha',
+  Devocionais: 'Devocionais',
+  Estudos: 'Estudos',
+}
 
 export async function getStaticProps({ preview }) {
   const postsTable = await getBlogIndex()
@@ -72,17 +78,47 @@ const Index = ({ posts = [], preview }) => {
 
         {/* Submenu de categorias */}
         <div className={blogStyles.categoryMenu}>
-          {[...POST_TYPES, 'Todos'].map((type) => (
+          {/* Linha 1 */}
+          <button
+            className={`${blogStyles.categoryButton} ${
+              selectedType === 'Problemas1' ? blogStyles.activeCategory : ''
+            }`}
+            onClick={() => setSelectedType('Problemas1')}
+          >
+            Problemas que você acha que tem
+          </button>
+
+          {/* Linha 2 */}
+          <button
+            className={`${blogStyles.categoryButton} ${
+              selectedType === 'Problemas2' ? blogStyles.activeCategory : ''
+            }`}
+            onClick={() => setSelectedType('Problemas2')}
+          >
+            Problemas que eu acho que talvez você tenha
+          </button>
+
+          {/* Linha 3 */}
+          <div className={blogStyles.categoryRow}>
+            {['Devocionais', 'Estudos'].map((type) => (
+              <button
+                key={type}
+                className={`${blogStyles.categoryButton} ${
+                  selectedType === type ? blogStyles.activeCategory : ''
+                }`}
+                onClick={() => setSelectedType(type)}
+              >
+                {type}
+              </button>
+            ))}
+
             <button
-              key={type}
-              className={`${blogStyles.categoryButton} ${
-                selectedType === type ? blogStyles.activeCategory : ''
-              }`}
-              onClick={() => setSelectedType(type === 'Todos' ? null : type)}
+              className={blogStyles.categoryButton}
+              onClick={() => setSelectedType(null)}
             >
-              {type}
+              Todos
             </button>
-          ))}
+          </div>
         </div>
 
         {posts.length === 0 && (
