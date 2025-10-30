@@ -292,3 +292,7 @@
 h1 {
   color: red !important;
 }
+
+:global(h1) {
+  color: red !important;
+}
