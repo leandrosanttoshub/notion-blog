@@ -3,7 +3,7 @@
 }
 
 .blogIndex h1 {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .previewAlertContainer {
@@ -251,39 +251,40 @@
 }
 
 /* Category Menu (filtro do blog) */
-/* Container central do menu */
-.categoryMenu {
+/* ==== Category Menu — correct scoped CSS module ==== */
+.blogIndex .categoryMenu {
   display: flex;
-  flex-direction: column; /* vertical: 1ª linha, 2ª linha, 3ª linha */
+  flex-direction: column;
   align-items: center;
   gap: 4px;
-  margin-bottom: 25px;
+  margin-bottom: 12px;
+  margin-top: -10px;
 }
 
-.categoryRow {
-  display: flex; /* a terceira linha fica horizontal */
+.blogIndex .categoryRow {
+  display: flex;
   gap: 7px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-:global(.categoryButton) {
-  background: transparent !important;
-  border: 1px solid rgba(0, 0, 0, 0.15) !important;
-  padding: 3px 10px !important;
-  border-radius: 10px !important;
-  cursor: pointer !important;
-  font-size: 0.5rem !important;
-  font-family: inherit !important; /* usa a mesma fonte do resto do site */
-  color: #333 !important;
-  transition: all 0.2s ease !important;
+.blogIndex .categoryButton {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 3px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.6rem;
+  font-family: inherit;
+  color: #333;
+  transition: all 0.2s linear;
 }
 
-.categoryButton:hover {
+.blogIndex .categoryButton:hover {
   background: rgba(0, 0, 0, 0.08);
 }
 
-.activeCategory {
+.blogIndex .activeCategory {
   background: #111;
   color: #fff;
   border-color: #111;
