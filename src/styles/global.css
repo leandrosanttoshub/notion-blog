@@ -415,3 +415,22 @@ footer span:nth-child(3) a {
   color: white !important;
   border-color: #000 !important;
 }
+/* ==== Override para botões de categoria ==== */
+
+[class*='blog_categoryButton'] {
+  background: #fafafa !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  padding: 6px 14px !important;
+  border-radius: 14px !important;
+  cursor: pointer !important;
+  font-size: 0.9rem !important;
+  font-family: inherit !important;
+  color: #333 !important;
+  transition: all 0.2s ease !important;
+}
+
+[class*='blog_activeCategory'] {
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #000 !important;
+}
