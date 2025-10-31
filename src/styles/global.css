@@ -198,26 +198,72 @@ pre.dark[class*='language-'] {
   align-items: center;
 }
 
+/* grid de duas linhas perfeitas */
+/* container simétrico */
+/* Grade mais compacta */
 .features {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 4rem auto;
-  width: 920px;
-  max-width: calc(100vw - var(--gap-double));
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 40px; /* menos espaço vertical e horizontal */
+  justify-items: center;
+  align-items: center;
+  margin: 24px auto 32px auto;
+  max-width: 600px; /* antes era 720px — agora alinhado ao texto */
 }
 
+/* Items menores */
 .feature {
-  flex: 0 0 25%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  display: inline-flex;
-  padding: 0 0.5rem 1.5rem;
-  margin: 0 auto;
+  text-align: center;
+  gap: 4px; /* espaço menor entre ícone e título */
+  width: 100px; /* antes 120px */
+  transform: translateX(4px)
+}
+
+/* Caixa fixa para equalizar altura dos ícones */
+.feature-icon-wrapper {
+  height: 32px; /* antes 42px */
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ícones menores */
+.imaginalis-icon {
+  height: 26px; /* antes 34px */
+  width: 26px;
+  color: #000;
+  transition: transform .25s ease, color .25s ease;
+}
+
+/* Hover discreto */
+.feature:hover .imaginalis-icon {
+  color: #b89a34;
+  transform: translateY(-1px);
+}
+
+/* Títulos menores */
+.feature h4 {
+  font-size: 0.45rem; /* antes 0.82rem */
+  font-weight: 400;
+  white-space: normal;
+  line-height: 1.1;
+  text-align: center;
+  max-width: 100px;
+  transform: translateX(-5px)
+}
+
+.feature:hover h4 {
+  color: #b89a34;
 }
 
 .feature h4 {
   margin: 0 0 0 0.5rem;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.45rem;
   white-space: nowrap;
 }
 
@@ -433,4 +479,49 @@ footer span:nth-child(3) a {
   background: #000 !important;
   color: #fff !important;
   border-color: #000 !important;
+}
+
+/* ===== Imaginalis (Aurea) ===== */
+:root {
+  --imaginalis-color: #1b1b1b;        /* cor base dos ícones (light) */
+  --imaginalis-hover: #D4A31F;        /* AUREA: dourado suave */
+  --imaginalis-glow: rgba(212, 163, 31, 0.35);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --imaginalis-color: #e8e8e8;      /* cor base dos ícones (dark) */
+    --imaginalis-hover: #E6C25A;      /* dourado um pouco mais claro no dark */
+    --imaginalis-glow: rgba(230, 194, 90, 0.35);
+  }
+}
+
+/* ícones base */
+.imaginalis-icon {
+  width: 32px; /* antes 24px */
+  height: 32px;
+  color: #000; /* preto para já aparecer forte */
+  transition: transform .25s ease, color .25s ease, filter .25s ease, opacity .25s ease;
+  opacity: 1;
+}
+
+/* animação discreta no hover (aplicada quando o bloco pai recebe hover) */
+.feature:hover .imaginalis-icon,
+.features .feature:focus-within .imaginalis-icon {
+  transform: scale(1.03);
+  color: var(--imaginalis-hover);
+  filter: drop-shadow(0 0 0.25rem var(--imaginalis-glow));
+  opacity: 0.9;
+}
+
+/* ajuste fino do texto dos 8 itens */
+.feature h4 {
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: var(--accents-2);
+}
+
+/* grid levemente mais respirado */
+.features {
+  gap: 4px;
 }

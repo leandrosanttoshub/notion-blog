@@ -4,10 +4,11 @@ import ExtLink from '../components/ext-link'
 import sharedStyles from '../styles/shared.module.css'
 import contactStyles from '../styles/contact.module.css'
 
-import GitHub from '../components/svgs/github'
 import Twitter from '../components/svgs/twitter'
 import Envelope from '../components/svgs/envelope'
-import LinkedIn from '../components/svgs/linkedin'
+import Youtube from '../components/svgs/youtube'
+import Telegram from '../components/svgs/telegram'
+
 
 const contacts = [
   {
@@ -16,21 +17,22 @@ const contacts = [
     link: 'https://twitter.com/_ijjk',
   },
   {
-    Comp: GitHub,
-    alt: 'github icon',
-    link: 'https://github.com/ijjk',
+ Comp: Youtube,
+    alt: 'youtube icon',
+    link: 'https://www.youtube.com/@escoladesaberestradicionai4542',
   },
   {
-    Comp: LinkedIn,
-    alt: 'linkedin icon',
-    link: 'https://www.linkedin.com/in/jj-kasper-0b5392166/',
+    Comp: Telegram,
+    alt: 'telegram icon',
+    link: 'https://t.me/clubecarvalho',
   },
   {
     Comp: Envelope,
-    alt: 'envelope icon',
-    link: 'mailto:jj@jjsweb.site?subject=Notion Blog',
+    alt: 'email icon',
+    link: 'mailto:psi.leandrosanttos@gmail.com',
   },
 ]
+  
 
 export default function Contact() {
   return (
@@ -41,11 +43,10 @@ export default function Contact() {
           <img src="/avatar.png" alt="avatar with letters JJ" height={60} />
         </div>
 
-        <h1 style={{ marginTop: 0 }}>Contact</h1>
+        <h1 style={{ marginTop: 0 }}>Minhas redes</h1>
 
         <div className={contactStyles.name}>
-          JJ Kasper - Next.js Engineer @{' '}
-          <ExtLink href="https://vercel.com">Vercel</ExtLink>
+          Aproveite principalmente meu Youtube{' '}
         </div>
 
         <div className={contactStyles.links}>

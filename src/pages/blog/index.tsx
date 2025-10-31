@@ -59,7 +59,7 @@ export async function getStaticProps({ preview }) {
 
 const Index = ({ posts = [], preview }) => {
   const [selectedType, setSelectedType] = useState<string | null>(null)
-
+  
   const menuWrapStyle: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
@@ -109,7 +109,7 @@ const Index = ({ posts = [], preview }) => {
         </div>
       )}
       <div className={`${sharedStyles.layout} ${blogStyles.blogIndex}`}>
-        <h1 style={{ color: 'purple' }}>Leandro Santtos</h1>
+        <h1>Blog</h1>
 
         {/* Submenu de categorias */}
         {/* Submenu de categorias (3 linhas), com estilo inline para garantir override */}
