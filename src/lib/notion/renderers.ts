@@ -34,10 +34,27 @@ export function textBlock(text = [], noPTag = false, mainKey) {
 
   for (const textItem of text) {
     key++
+    // Se vier só o texto sem formatação, ou sobras, trata aqui
     if (textItem.length === 1) {
-      children.push(textItem)
+      const raw = String(textItem[0]).trim()
+
+      // Ignorar sobras de formatação do Notion (i, b, e versões estranhas)
+      if (
+        raw === 'i' ||
+        raw === 'b' ||
+        raw === '*' ||                     // markdown restos
+        raw.match(/^[ib]$/i) ||            // i ou b sozinhos
+        raw.match(/^[*_]$/) ||             // *, _, _
+        raw === ''                         // vazio
+      ) {
+        continue
+      }
+
+      children.push(raw)
       continue
     }
+
+
     children.push(applyTags(textItem[1], textItem[0], noPTag, key))
   }
   return React.createElement(

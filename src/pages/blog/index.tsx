@@ -42,6 +42,13 @@ export async function getStaticProps({ preview }) {
     })
     .filter(Boolean)
 
+  // Ordenar por data (mais recentes primeiro)
+  posts.sort((a, b) => {
+    const dateA = new Date(a.Date)
+    const dateB = new Date(b.Date)
+    return dateB.getTime() - dateA.getTime()
+  })
+
   const { users } = await getNotionUsers([...authorsToGet])
 
   posts.map((post) => {
@@ -59,7 +66,7 @@ export async function getStaticProps({ preview }) {
 
 const Index = ({ posts = [], preview }) => {
   const [selectedType, setSelectedType] = useState<string | null>(null)
-  
+
   const menuWrapStyle: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
@@ -116,9 +123,8 @@ const Index = ({ posts = [], preview }) => {
         <div className={blogStyles.categoryMenu} style={menuWrapStyle}>
           {/* Linha 1 */}
           <button
-            className={`${blogStyles.categoryButton} ${
-              selectedType === 'Problemas1' ? blogStyles.activeCategory : ''
-            }`}
+            className={`${blogStyles.categoryButton} ${selectedType === 'Problemas1' ? blogStyles.activeCategory : ''
+              }`}
             style={selectedType === 'Problemas1' ? btnActiveStyle : btnStyle}
             onClick={() => setSelectedType('Problemas1')}
           >
@@ -127,9 +133,8 @@ const Index = ({ posts = [], preview }) => {
 
           {/* Linha 2 */}
           <button
-            className={`${blogStyles.categoryButton} ${
-              selectedType === 'Problemas2' ? blogStyles.activeCategory : ''
-            }`}
+            className={`${blogStyles.categoryButton} ${selectedType === 'Problemas2' ? blogStyles.activeCategory : ''
+              }`}
             style={selectedType === 'Problemas2' ? btnActiveStyle : btnStyle}
             onClick={() => setSelectedType('Problemas2')}
           >
@@ -141,9 +146,8 @@ const Index = ({ posts = [], preview }) => {
             {['Devocionais', 'Estudos'].map((type) => (
               <button
                 key={type}
-                className={`${blogStyles.categoryButton} ${
-                  selectedType === type ? blogStyles.activeCategory : ''
-                }`}
+                className={`${blogStyles.categoryButton} ${selectedType === type ? blogStyles.activeCategory : ''
+                  }`}
                 style={selectedType === type ? btnActiveStyle : btnStyle}
                 onClick={() => setSelectedType(type)}
               >
