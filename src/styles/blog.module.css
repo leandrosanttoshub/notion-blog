@@ -290,3 +290,72 @@
   color: white;
   border-color: #000;
 }
+
+/* container do Notion — aplica somente ao conteúdo do blog */
+.notion-root {
+  font-family: inherit; /* garante herdar sua fonte */
+  line-height: 1.6;
+}
+
+/* imagens (assets, covers, inline imgs) */
+.notion-root img,
+.notion-root .notion-asset-wrapper img,
+.notion-root .notion-cover img,
+.notion-root .notion-gallery img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0.5rem 0;
+  object-fit: contain;
+}
+
+/* ícones de página / coleções / bookmarks — reduzir para algo discreto */
+.notion-root .notion-page-icon,
+.notion-root .notion-asset-icon,
+.notion-root .notion-icon,
+.notion-root .notion-collection-cover img,
+.notion-root .notion-symbol {
+  width: 2rem !important;
+  height: 2rem !important;
+  font-size: 1.15rem !important;
+  line-height: 1 !important;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* cabeçalho que às vezes coloca ícone muito grande */
+.notion-root .notion-page-title .notion-page-icon,
+.notion-root .notion-page-header-icon {
+  width: 2.4rem !important;
+  height: 2.4rem !important;
+}
+
+/* links — evita que fiquem gigantes e preserva estilo do seu site */
+.notion-root a {
+  font-size: inherit;
+  text-decoration: underline;
+  color: inherit;
+  word-break: break-word;
+}
+
+/* evita que ícones SVG internos escalem por herança inesperada */
+.notion-root svg {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+/* pequenos ajustes para Notion blocks (callout, code) */
+.notion-root .callout,
+.notion-root .notion-callout {
+  border-radius: 8px;
+  padding: 0.6rem;
+}
+
+/* garantir lista e texto com espaçamentos corretos */
+.notion-root p,
+.notion-root li {
+  font-size: 1rem;
+  margin: 0.4rem 0;
+}

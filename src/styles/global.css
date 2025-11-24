@@ -525,3 +525,120 @@ footer span:nth-child(3) a {
 .features {
   gap: 4px;
 }
+
+/* Esconde a área de propriedades da página */
+.notion-collection-page-properties,
+.notion-collection-row,
+.notion-collection-row-body,
+.notion-collection-column,
+.notion-collection-column-title-icon,
+.notion-collection-column-title-body {
+  display: none !important;
+}
+
+.notion-page-icon,
+.notion-page-header-icon {
+  display: none !important;
+}
+
+/* ============================================
+   Reset/normalize apenas para o conteúdo Notion
+   ============================================ */
+
+/* container onde você colocou o NotionRenderer */
+.notion-root {
+  font-family: inherit;
+  line-height: 1.6;
+}
+
+/* força que links dentro do Notion herdem o tamanho do texto do post */
+.notion-root a {
+  display: inline !important;        /* evita blocos gigantes */
+  font-size: inherit !important;     /* herda o tamanho do parágrafo */
+  line-height: inherit !important;
+  color: inherit !important;         /* usa cor do texto do site */
+  text-decoration: underline !important;
+  padding: 0 !important;             /* remove paddings estranhos */
+  margin: 0 !important;
+  max-width: 100% !important;
+  word-break: break-word !important;
+}
+
+/* Links que são renderizados como "badges" ou chips dentro da área de properties
+   (caso você ainda queira esconder properties, ver a regra anterior que sugeri) */
+.notion-root .notion-collection-row-value a,
+.notion-root .notion-collection-row-property a {
+  display: inline !important;
+  font-size: 0.95rem !important;
+  padding: 0 !important;
+}
+
+/* imagens/ícones do Notion (garante que não estouram) */
+.notion-root img {
+  max-width: 100% !important;
+  height: auto !important;
+  display: inline-block !important;
+}
+
+/* Caso alguma regra global esteja forçando <a> a ser bloco com largura definida,
+   esta classe corrige especificamente dentro do Notion. */
+.notion-root a[role="link"], .notion-root a.notion-link {
+  display: inline !important;
+}
+
+/* se necessário, esconda metadados (properties) — evita links grandes na área de propriedades */
+.notion-collection-page-properties,
+.notion-collection-row,
+.notion-collection-column-title,
+.notion-collection-column-title-body {
+  display: none !important;
+}
+/* ========== Correções específicas para o Notion link preview / mention ========== */
+/* assegura que thumbs/link-previews não "estourem" o layout */
+.notion-root img.notion-link-mention-preview-thumbnail,
+.notion-root article.notion-link-mention-card img,
+.notion-root .notion-link-mention-preview img,
+.notion-root .notion-link-mention-card img,
+.notion-root .notion-link-mention-preview-thumbnail {
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+}
+
+/* se o preview for colocado dentro de um wrapper com largura fixa, assegura que não extrapole */
+.notion-root .notion-link-mention-card,
+.notion-root .notion-link-mention-preview {
+  max-width: 680px; /* ajuste se quiser limitar a largura do cartão preview */
+  width: 100% !important;
+}
+
+/* garante que os links do Notion sejam inline e não peguem paddings/margens globais */
+.notion-root a,
+.notion-root .notion-link-mention a,
+.notion-root .notion-link-mention {
+  display: inline !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  color: inherit !important;
+  text-decoration: underline !important;
+}
+
+/* caso alguma regra global force images do blog (seu blog.module.css) */
+.blog_post__I2mN3 img,
+.blog_post__I2mN3 video,
+.blog_post__I2mN3 .asset-wrapper img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* opcional: esconder properties/meta se ainda aparecerem (mantém o post limpo) */
+.notion-collection-page-properties,
+.notion-collection-row,
+.notion-collection-column-title,
+.notion-collection-column-title-body {
+  display: none !important;
+}
