@@ -35,11 +35,14 @@ if (!BLOG_INDEX_ID) {
   )
 }
 
-// Transpilar módulos modernos do Notion
+// ------------------------------------------------------------------
+// Transpile modules & handle ESM externals (fix for react-notion-x)
+// ------------------------------------------------------------------
 const withTM = require('next-transpile-modules')([
   'react-notion-x',
   'notion-client',
   'notion-utils',
+  'notion-types',
   'react-image',
   'react-intersection-observer'
 ])
@@ -48,10 +51,16 @@ module.exports = withTM({
   reactStrictMode: true,
   swcMinify: true,
 
-  webpack(cfg, { dev, isServer }) {
-    // Removido: build-rss (era o causador do erro)
-    // Não carregamos mais ./src/lib/build-rss.ts
+  // importante para Next 12 lidar melhor com ESM externals
+  experimental: {
+    // 'loose' geralmente funciona bem — tenta 'false' se houver problemas
+    esmExternals: 'loose'
+  },
 
+  webpack(cfg, { dev, isServer }) {
+    // Mantemos a lógica anterior, mas NÃO injetamos build-rss no bundle
+    // (isso causou problemas antes).
+    // Outras customizações de webpack podem ir aqui.
     return cfg
   }
 })
