@@ -1,26 +1,33 @@
 // src/lib/fs-helpers.ts
-// Compat layer: usa fs no modo development (node), e stubs seguros em produção/build.
-// Isso permite que o OLD_getBlogIndex continue a funcionar sem quebrar o build na Vercel.
+// Compat layer: funciona em dev e não quebra no build da Vercel.
 
-const IS_DEV = process.env.NODE_ENV === 'development'
+// Declaramos as funções primeiro (vazias):
+let readFileImpl: (path: string, enc?: string) => Promise<string>
+let writeFileImpl: (path: string, data: string, enc?: string) => Promise<void>
 
-if (IS_DEV) {
-  // Em desenvolvimento, usar o fs real para que caches/arquivos locais funcionem.
-  // tslint:disable-next-line:no-var-requires
+if (process.env.NODE_ENV === 'development') {
+  // Em desenvolvimento local, usar fs real
   const fs = require('fs')
   const { promisify } = require('util')
-  export const readFile = promisify(fs.readFile)
-  export const writeFile = promisify(fs.writeFile)
+
+  readFileImpl = async (path: string, enc: string = 'utf8') => {
+    return promisify(fs.readFile)(path, enc)
+  }
+
+  writeFileImpl = async (path: string, data: string, enc: string = 'utf8') => {
+    return promisify(fs.writeFile)(path, data, enc)
+  }
 } else {
-  // Em build/produção na Vercel, não executamos IO no servidor build-time.
-  // Retornamos stubs simples que fazem o OLD_getBlogIndex seguir o fluxo normal
-  // (i.e., quando o cache não existe, o código vai buscar os dados remotos).
-  export const readFile = async (_path: string, _enc: string = 'utf8'): Promise<string> => {
+  // Em produção (Vercel): stubs seguros
+  readFileImpl = async (_path: string, _enc: string = 'utf8') => {
     return '{}'
   }
 
-  export const writeFile = async (_path: string, _data: string, _enc: string = 'utf8'): Promise<void> => {
-    // noop
+  writeFileImpl = async (_path: string, _data: string, _enc: string = 'utf8') => {
     return Promise.resolve()
   }
 }
+
+// Exports top-level (obrigatório no isolatedModules)
+export const readFile = readFileImpl
+export const writeFile = writeFileImpl
