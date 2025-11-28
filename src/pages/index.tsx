@@ -27,7 +27,7 @@ export default function Index() {
 
         <Features />
 
-        <div className="explanation">
+        <div className="explanation" style={{ textAlign: "justify" }}>
           <p>
            A ideia de criar esse lugar veio do meu contato com o Bardo Thödol, 
            o livro que cura somente em ser recitado e ouvido. 
