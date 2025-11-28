@@ -642,3 +642,65 @@ footer span:nth-child(3) a {
 .notion-collection-column-title-body {
   display: none !important;
 }
+
+/* Ajustes do Features para telas pequenas */
+/* Features: grid responsivo (3 colunas em mobile médio, 2 colunas em muito estreitos) */
+@media (max-width: 600px) {
+  .features {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    gap: 14px 8px;
+    justify-items: center;
+    align-items: start;
+    padding: 0 12px;
+  }
+
+  .feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    padding: 6px 4px;
+  }
+
+  .feature svg {
+    width: 34px !important;
+    height: 34px !important;
+    margin-bottom: 6px;
+  }
+
+  .feature h4 {
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    margin: 0;
+  }
+}
+
+/* fallback for very narrow screens: 2 colunas para evitar itens muito pequenos */
+@media (max-width: 360px) {
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* opcional: tablet/desktop tuning (ex.: 4 colunas em telas maiores que 900px) */
+@media (min-width: 900px) {
+  .features {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-items: center;
+  }
+
+  .feature svg {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .feature h4 {
+    font-size: 14px !important;
+  }
+}

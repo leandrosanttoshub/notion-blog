@@ -8,7 +8,7 @@ import Astrologia from './icons/Astrologia'
 import Cristianismo from './icons/Cristianismo'
 
 const features = [
-  { text: 'Psicologia Tradicional', icon: Psicologia },
+  { text: 'Psicologia', icon: Psicologia },
   { text: 'Escolástica', icon: Escolastica },
   { text: 'Simbolismo', icon: Simbolismo },
   { text: 'Astrologia', icon: Astrologia },

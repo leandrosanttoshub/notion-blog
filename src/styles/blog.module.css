@@ -359,3 +359,25 @@
   font-size: 1rem;
   margin: 0.4rem 0;
 }
+
+/* Ajuste de ícones / títulos do Features para telas pequenas */
+@media (max-width: 600px) {
+  .features {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 colunas no mobile */
+    gap: 12px 8px;
+    text-align: center;
+  }
+
+  .feature h4 {
+    font-size: 13px;      /* diminui a letra */
+    line-height: 1.2;     /* compacta */
+    word-break: break-word; 
+    white-space: normal;  /* permite quebrar em várias linhas */
+  }
+
+  .feature svg {
+    width: 38px !important;
+    height: 38px !important; /* ícones menores no mobile */
+  }
+}

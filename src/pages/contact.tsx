@@ -14,7 +14,7 @@ const contacts = [
   {
     Comp: Twitter,
     alt: 'twitter icon',
-    link: 'https://twitter.com/_ijjk',
+    link: 'https://twitter.com/lelosanttos',
   },
   {
  Comp: Youtube,
